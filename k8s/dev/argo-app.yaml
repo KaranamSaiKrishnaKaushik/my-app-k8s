@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: property-app
+  name: my-app-k8s
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/KaranamSaiKrishnaKaushik/first-kubernetes-app
+    repoURL: https://github.com/KaranamSaiKrishnaKaushik/my-app-k8s
     targetRevision: HEAD
     path: k8s
   destination:
     server: https://kubernetes.default.svc
-    namespace: first-kubernetes-app
+    namespace: my-app-k8s
   syncPolicy:
     automated:
       prune: true
