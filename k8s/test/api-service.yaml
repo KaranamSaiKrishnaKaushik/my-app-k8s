@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: first-kubernetes-app
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 8080     # frontend expects this port per your docker-compose
+      targetPort: 80
+  type: ClusterIP

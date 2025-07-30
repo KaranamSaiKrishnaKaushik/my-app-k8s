@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mock", "Mock\Mock.csproj", "{B545D5E3-62C5-4025-B469-811FE28FAD0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mock.Tests", "Mock.Tests\Mock.Tests.csproj", "{7722D3CD-10C0-4360-A298-A49D26990A15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B545D5E3-62C5-4025-B469-811FE28FAD0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B545D5E3-62C5-4025-B469-811FE28FAD0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B545D5E3-62C5-4025-B469-811FE28FAD0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B545D5E3-62C5-4025-B469-811FE28FAD0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7722D3CD-10C0-4360-A298-A49D26990A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7722D3CD-10C0-4360-A298-A49D26990A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7722D3CD-10C0-4360-A298-A49D26990A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7722D3CD-10C0-4360-A298-A49D26990A15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

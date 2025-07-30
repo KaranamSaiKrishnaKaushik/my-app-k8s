@@ -1,0 +1,13 @@
+# Node
+node_modules/
+dist/
+
+# Dotnet
+bin/
+obj/
+
+# Docker
+*.log
+
+# Others
+.env
