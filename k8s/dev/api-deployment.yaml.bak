@@ -16,6 +16,5 @@ spec:
       containers:
         - name: backend
           image: backend-kube #dokkaushik/backend:latest  # replace with your actual Docker image
-          imagePullPolicy: Never
           ports:
             - containerPort: 80

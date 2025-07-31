@@ -1,6 +1,7 @@
 services:
   frontend:
     build: ./my-angular-app
+    image: frontend-kube
     ports:
       - "4200:80"
     depends_on:
@@ -8,5 +9,6 @@ services:
 
   backend:
     build: ./Mock
+    image: backend-kube
     ports:
       - "5000:8080"

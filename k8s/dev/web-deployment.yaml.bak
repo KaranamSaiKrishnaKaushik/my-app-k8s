@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: frontend
   namespace: first-kubernetes-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: frontend
   template:
     metadata:
       labels:
-        app: backend
+        app: frontend
     spec:
       containers:
-        - name: backend
-          image: backend-kube #dokkaushik/backend:latest  # replace with your actual Docker image
-          imagePullPolicy: Never
+        - name: frontend
+          image: frontend-kube # dokkaushik/frontend:latest  # replace with your actual Docker image
           ports:
             - containerPort: 80

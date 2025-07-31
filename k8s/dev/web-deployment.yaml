@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: your-dockerhub-username/frontend:latest  # replace with your actual Docker image
+          image: frontend-kube # dokkaushik/frontend:latest  # replace with your actual Docker image
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
