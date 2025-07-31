@@ -34,8 +34,8 @@ jobs:
 
     - name: Build and Push Backend
       run: |
-        docker build -t your-dockerhub-user/mock-backend ./Mock
-        docker push dokkaushik/mock-backend
+        docker build -t dokkaushik/Mock ./Mock
+        docker push dokkaushik/Mock
 
     - name: Commit updated image tags (optional)
       run: echo "Add kustomize or sed logic here to update Kubernetes YAMLs"
