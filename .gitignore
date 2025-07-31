@@ -20,9 +20,9 @@
 /bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/my-angular-app/node_modules
+/my-angular-app/npm-debug.log
+/my-angular-app/yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -42,13 +42,13 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+/my-angular-app/.angular/cache
+/my-angular-app/.sass-cache/
+/my-angular-app/connect.lock
+/my-angular-app/coverage
+/my-angular-app/libpeerconnection.log
+/my-angular-apptestem.log
+/my-angular-app/typings
 
 # System files
 .DS_Store

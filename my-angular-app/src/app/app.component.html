@@ -1,0 +1,75 @@
+<div class="calculator-container">
+  <h1>Number Calculator</h1>
+  
+  <!-- <div class="form-group">
+    <label>
+      <input 
+        type="checkbox" 
+        [(ngModel)]="useMockApi" 
+        name="useMockApi">
+      Use Mock API (for testing without backend)
+    </label>
+    <div style="margin-top: 5px; font-size: 12px; color: #666;">
+      Current mode: {{ useMockApi ? 'Mock API (Local calculation)' : 'Real API (HTTP request)' }}
+    </div>
+  </div> -->
+  
+  <form class="calculator-form" (ngSubmit)="useMockApi ? false : onSum()">
+    <div class="form-group">
+      <label for="number1">First Number:</label>
+      <input 
+        type="number" 
+        id="number1" 
+        [(ngModel)]="number1" 
+        name="number1"
+        placeholder="Enter first number"
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="number2">Second Number:</label>
+      <input 
+        type="number" 
+        id="number2" 
+        [(ngModel)]="number2" 
+        name="number2"
+        placeholder="Enter second number"
+        required>
+    </div>
+
+    <button 
+      type="button" 
+      class="sum-button"
+      [disabled]="isLoading || number1 === null || number2 === null"
+      (click)="onSum()">
+      {{ isLoading ? "Calculating..." : "Sum (via API)" }}
+    </button>
+    
+    <!-- <button 
+      type="button" 
+      class="sum-button"
+      style="margin-left: 10px; background-color: #28a745;"
+      [disabled]="isLoading || number1 === null || number2 === null"
+      (click)="onSumLocal()">
+      {{ isLoading ? "Calculating..." : "Sum (Local Test)" }}
+    </button> -->
+  </form>
+
+  <div class="result-section" *ngIf="result !== null || errorMessage">
+    <div class="form-group" *ngIf="result !== null">
+      <label for="result">Result:</label>
+      <input 
+        type="text" 
+        id="result" 
+        [value]="result" 
+        readonly
+        class="result-input">
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
