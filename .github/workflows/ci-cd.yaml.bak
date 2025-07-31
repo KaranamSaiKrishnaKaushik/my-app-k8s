@@ -25,13 +25,13 @@ jobs:
 
     - name: Build and Push Frontend
       run: |
-        docker build -t s/my-angular-app ./my-angular-app
-        docker push dokkaushik/my-angular-app
+        docker build -t your-dockerhub-user/my-angular-app ./my-angular-app
+        docker push your-dockerhub-user/my-angular-app
 
     - name: Build and Push Backend
       run: |
         docker build -t your-dockerhub-user/mock-backend ./Mock
-        docker push dokkaushik/mock-backend
+        docker push your-dockerhub-user/mock-backend
 
     - name: Commit updated image tags (optional)
       run: echo "Add kustomize or sed logic here to update Kubernetes YAMLs"
