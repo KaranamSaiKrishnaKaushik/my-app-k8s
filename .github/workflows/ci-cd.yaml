@@ -38,11 +38,11 @@ jobs:
         docker push dokkaushik/mock
         
     - name: Update image tag in deployment YAML
-        run: |
+      run: |
             sed -i "s|dokkaushik/my-angular-app:latest:.*|dokkaushik/my-angular-app:latest:${{ github.sha }}|" k8s/dev/api-deployment.yaml
             
     - name: Commit updated YAML
-        run: |
+      run: |
             git config --global user.email "karanamsaikrishna.kaushik@gmail.com"
             git config --global user.name "Kaushik Karanam"
             git commit -am "Update image tag to ${{ github.sha }}"

@@ -36,9 +36,6 @@ jobs:
       run: |
         docker build -t dokkaushik/mock ./mock
         docker push dokkaushik/mock
-
-    - name: mock-api
-        image: dokkaushik/backend-kube
         
     - name: Update image tag in deployment YAML
         run: |
