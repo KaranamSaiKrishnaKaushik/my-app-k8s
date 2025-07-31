@@ -34,7 +34,7 @@ jobs:
 
     - name: Build and Push Backend
       run: |
-        docker build -t dokkaushik/mock ./mock
+        docker build -t dokkaushik/mock ./Mock
         docker push dokkaushik/mock
         
     - name: Update image tag in deployment YAML
