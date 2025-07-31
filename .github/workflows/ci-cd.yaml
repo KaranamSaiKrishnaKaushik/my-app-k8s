@@ -22,6 +22,10 @@ jobs:
       with:
         username: dokkaushik
         password: Iamthebest
+    - name: Debug - Show Files
+      run: |
+        pwd
+        ls -R
 
     - name: Build and Push Frontend
       run: |
