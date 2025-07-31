@@ -35,6 +35,3 @@ jobs:
 
     - name: Commit updated image tags (optional)
       run: echo "Add kustomize or sed logic here to update Kubernetes YAMLs"
-
-    - name: Deploy to Argo CD (Optional: Manual Sync or Webhook)
-      run: echo "Argo CD will auto-sync if configured"
