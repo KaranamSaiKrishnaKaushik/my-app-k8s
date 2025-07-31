@@ -25,7 +25,7 @@ jobs:
 
     - name: Build and Push Frontend
       run: |
-        docker build -t s/my-angular-app ./my-angular-app
+        docker build -t dokkaushik/my-angular-app ./my-angular-app
         docker push dokkaushik/my-angular-app
 
     - name: Build and Push Backend
