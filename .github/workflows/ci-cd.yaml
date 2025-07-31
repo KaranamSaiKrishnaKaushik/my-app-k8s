@@ -24,6 +24,7 @@ jobs:
         password: Iamthebest
 
     - name: Build and Push Frontend
+      working-directory: ./my-app-k8s
       run: |
         docker build -t dokkaushik/my-angular-app ./my-angular-app
         docker push dokkaushik/my-angular-app
