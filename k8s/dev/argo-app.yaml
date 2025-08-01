@@ -11,7 +11,7 @@ spec:
     path: k8s
   destination:
     server: https://kubernetes.default.svc
-    namespace: my-app-k8s
+    namespace: first-kubernetes-app
   syncPolicy:
     automated:
       prune: true
