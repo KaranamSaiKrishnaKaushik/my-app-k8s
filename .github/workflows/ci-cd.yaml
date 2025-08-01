@@ -2,56 +2,34 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
+
+env:
+  REGISTRY: docker.io
+  DOCKER_USERNAME: dokkaushik  # your Docker Hub username
+  IMAGE_TAG: main              # constant tag used by Argo CD
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repo
+    - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
-        username: dokkaushik
-        password: Iamthebest
-    - name: Debug - Show Files
-      run: |
-        pwd
-        ls -R
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and Push Frontend
+    - name: Build and Push Frontend Image
       run: |
-        docker build -t dokkaushik/my-angular-app ./my-angular-app
-        docker push dokkaushik/my-angular-app
+        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/my-angular-app:${{ env.IMAGE_TAG }} ./frontend
+        docker push $REGISTRY/${{ env.DOCKER_USERNAME }}/my-angular-app:${{ env.IMAGE_TAG }}
 
-    - name: Build and Push Backend
+    - name: Build and Push Backend Image
       run: |
-        docker build -t dokkaushik/mock ./Mock
-        docker push dokkaushik/mock
-        
-    - name: Update image tag in web-deployment.yaml
-      run: |
-          sed -i "s|image: dokkaushik/my-angular-app:.*|image: dokkaushik/my-angular-app:${{ github.sha }}|" k8s/dev/web-deployment.yaml
-    
-    - name: Update image tag in api-deployment.yaml
-      run: |
-          sed -i "s|image: dokkaushik/mock:.*|image: dokkaushik/mock:${{ github.sha }}|" k8s/dev/api-deployment.yaml
-          
-    - name: Commit and Push Updated Deployment YAMLs
-      env:
-        GH_PAT: ${{ secrets.GH_PAT }}
-      run: |
-        git config --global user.email "ci-bot@github.com"
-        git config --global user.name "CI Bot"
-        git add k8s/dev/web-deployment.yaml k8s/dev/api-deployment.yaml
-        git commit -m "Update image tags to ${{ github.sha }}" || echo "No changes to commit"
-        git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}
-        git push origin main
+        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }} ./backend
+        docker push $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }}
