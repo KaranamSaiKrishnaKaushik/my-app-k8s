@@ -23,13 +23,19 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
+        
+    - name: Show directory structure
+      run: ls -R
+      
+    - name: Print working directory
+      run: pwd
+      
     - name: Build and Push Frontend Image
       run: |
-        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/my-angular-app:${{ env.IMAGE_TAG }} ./frontend
+        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/my-angular-app:${{ env.IMAGE_TAG }} ./my-angular-app
         docker push $REGISTRY/${{ env.DOCKER_USERNAME }}/my-angular-app:${{ env.IMAGE_TAG }}
 
     - name: Build and Push Backend Image
       run: |
-        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }} ./backend
+        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }} ./mock
         docker push $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }}
