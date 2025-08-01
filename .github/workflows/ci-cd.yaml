@@ -36,12 +36,20 @@ jobs:
       run: |
         docker build -t dokkaushik/mock ./Mock
         docker push dokkaushik/mock
-  
+        
     - name: Update image tag in web-deployment.yaml
       run: |
           sed -i "s|image: dokkaushik/my-angular-app:.*|image: dokkaushik/my-angular-app:${{ github.sha }}|" k8s/dev/web-deployment.yaml
- 
+    
     - name: Update image tag in api-deployment.yaml
       run: |
           sed -i "s|image: dokkaushik/mock:.*|image: dokkaushik/mock:${{ github.sha }}|" k8s/dev/api-deployment.yaml
+          
+    - name: Commit and Push Updated Deployment YAMLs
+      run: |
+        git config --global user.email "ci-bot@github.com"
+        git config --global user.name "CI Bot"
+        git add k8s/dev/web-deployment.yaml k8s/dev/api-deployment.yaml
+        git commit -m "Update image tags to ${{ github.sha }}"
+        git push      
     
