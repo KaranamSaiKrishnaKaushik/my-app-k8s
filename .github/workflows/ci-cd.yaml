@@ -37,5 +37,5 @@ jobs:
 
     - name: Build and Push Backend Image
       run: |
-        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }} ./mock
+        docker build -t $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }} ./Mock
         docker push $REGISTRY/${{ env.DOCKER_USERNAME }}/mock-api:${{ env.IMAGE_TAG }}
