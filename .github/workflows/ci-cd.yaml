@@ -45,11 +45,17 @@ jobs:
       run: |
           sed -i "s|image: dokkaushik/mock:.*|image: dokkaushik/mock:${{ github.sha }}|" k8s/dev/api-deployment.yaml
           
-    - name: Commit and Push Updated Deployment YAMLs
+    - name: Set up Git for commit
       run: |
         git config --global user.email "ci-bot@github.com"
         git config --global user.name "CI Bot"
+
+    - name: Commit and Push Updated Deployment YAMLs
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: |
         git add k8s/dev/web-deployment.yaml k8s/dev/api-deployment.yaml
-        git commit -m "Update image tags to ${{ github.sha }}"
-        git push      
+        git commit -m "Update image tags to ${{ github.sha }}" || echo "No changes to commit"
+        git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}
+        git push origin main 
     
